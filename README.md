@@ -40,4 +40,4 @@ To create a standalone executable for your application simply run
 
 ## How it looks
 
-![Mongitor MVP](https://raw.githubusercontent.com/elixir-lang/elixir/master/README.md)
+![Mongitor MVP](https://raw.githubusercontent.com/axfcampos/mongitor/master/images/mongitor-mvp.png)
