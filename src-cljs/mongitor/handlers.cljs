@@ -50,14 +50,17 @@
 
 (defn handle-kill-op-ok
   [app-state [_ [_ response]]]
-  (re-frame/dispatch [:log-kill-op-ok (:timestamp response)])
+  (re-frame/dispatch
+    [:log-kill-op-ok
+     (first (drop-while #(not (= (:opid %) (:opid response))) (:current-ops app-state)))
+     (:timestamp response)])
   (re-frame/dispatch [:get-ops])
   app-state)
 
 (defn handle-log-kill-op-ok
-  [app-state [_ timestamp]]
+  [app-state [_ op timestamp]]
   (assoc app-state :event-log
-         (assoc (:event-log app-state) timestamp "kill op ok!")))
+         (assoc (:event-log app-state) timestamp (str "OK kill op: " op))))
 
 (re-frame/register-handler
   :kill-op-ok

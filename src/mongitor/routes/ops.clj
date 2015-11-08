@@ -13,7 +13,8 @@
   (println (str "DETELE: /ops/"id))
   (mongo/kill-op id)
   {:body
-   {:timestamp (str (t/now))}})
+   {:timestamp (str (t/now))
+    :opid (read-string id)}})
 
 (defroutes ops-routes
   (DELETE "/ops/:id" [id] (del-op id))
