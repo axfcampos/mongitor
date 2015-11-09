@@ -30,5 +30,5 @@
     (fn []
       [:div
        [:div view-refresh-button]
-       [:div (p-last-n-pairs 5 @event-log)]
+       [:div {:class "event-log"} (p-last-n-pairs 30 @event-log)]
        [:div (p-current-ops @current-ops)]])))

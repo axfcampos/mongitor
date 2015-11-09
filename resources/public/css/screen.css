@@ -4,6 +4,13 @@ body {
     height: 100%;
     padding-top: 40px;
 }
+
+.event-log {
+  height: 400px;
+  width: 500px;
+  overflow-y: scroll;
+}
+
 {% if cljs %}
 @-moz-keyframes three-quarters-loader {
     0% {
