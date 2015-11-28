@@ -1,14 +1,130 @@
-html,
-body {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    height: 100%;
-    padding-top: 40px;
+* {
+  font-family: "proxima-nova",sans-serif;
+  box-shadow: none;
 }
 
-.event-log {
-  height: 400px;
-  width: 500px;
+.body, html {
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+#app {
+  width: inherit;
+  height: inherit;
+}
+
+#events {
+  width: inherit;
+  height: 20%;
   overflow-y: scroll;
+}
+
+#ops {
+  width: inherit;
+  height: 60%;
+}
+
+#refresher {
+  width: inherit;
+  height: 10%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#seperator {
+  width: 100%;
+  height: 2%;
+}
+
+.event-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+
+.event-tr .time-cell {
+  width: 1%;
+  height: 50px;
+  text-align: center;
+  padding: 5px;
+}
+
+.event-tr .error-result-cell {
+  background-color: rgba(255,0,0,.25);
+  text-align: center;
+  padding: 5px;
+}
+
+.event-tr .ok-result-cell {
+  background-color: rgba(0,255,0,.25);
+  text-align: center;
+  padding: 5px;
+}
+
+.event-tr {
+  /*background-color: #BBFF4D; */
+  /*background-color: #BC4952; */
+  /*background-color: #C03940;*/
+  /*background-color: rgba(255,0,0,.25);*/
+  border: 4px solid white;
+}
+
+.op-tr:first-child {
+  border-top: 0;
+}
+
+.op-tr {
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-color: #F0F0F0;
+}
+
+.ops-table .cell {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.ops-table {
+  border-collapse: collapse;
+}
+
+.kill-button {
+  margin: 10px;
+  width: 50px;
+  height: 30px;
+  font-size: 100%;
+  background-color: #ff4742;
+  color: #fff;
+  border-radius: 7px;
+  border-color: #ff4742;
+  border-width: 2px;
+  border-style: solid;
+  outline: none;
+}
+
+.refresh-button {
+  width: 100%;
+  height: 100%;
+  background-color: #ff4742;
+  color: #fff;
+  font-size: 150%;
+  border-radius: 7px;
+  border-color: #ff4742;
+  border-width: 2px;
+  border-style: solid;
+  outline: none;
+}
+
+.kill-button:hover {
+  background-color: #fff;
+  color: #ff4742;
+  cursor: pointer;
+}
+
+.refresh-button:hover {
+  background-color: #fff;
+  color: #ff4742;
+  cursor: pointer;
 }
 
 {% if cljs %}
