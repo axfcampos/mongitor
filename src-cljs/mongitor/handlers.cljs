@@ -32,7 +32,8 @@
 (defn handle-log-get-ops-ok
   [app-state [_ timestamp]]
   (assoc app-state :event-log
-         (assoc (:event-log app-state) timestamp "get ops ok!")))
+         (assoc (:event-log app-state)
+                timestamp {:result :ok :message "get ops ok!"})))
 
 (defn handle-current-ops
   [app-state [_ ops]]
@@ -41,26 +42,30 @@
 (defn handle-get-ops-ok
   [app-state [_ [_ response]]]
   (re-frame/dispatch [:current-ops (:current-ops response)])
-  (re-frame/dispatch [:log-get-ops-ok (:timestamp response)])
+  (re-frame/dispatch [:log-get-ops-ok (:time response)])
   app-state)
 
 (defn handle-get-ops-not-ok
   [app-state [_ response]]
-  (assoc app-state :status-message "Failed to retrieve ops."))
+  (assoc app-state :event-log
+        (assoc (:event-log app-state)
+               "wut" {:result :err :message "Failed to retrieve ops."})))
 
 (defn handle-kill-op-ok
   [app-state [_ [_ response]]]
   (re-frame/dispatch
     [:log-kill-op-ok
      (first (drop-while #(not (= (:opid %) (:opid response))) (:current-ops app-state)))
-     (:timestamp response)])
+     (:time response)
+     (:message response)])
   (re-frame/dispatch [:get-ops])
   app-state)
 
 (defn handle-log-kill-op-ok
-  [app-state [_ op timestamp]]
+  [app-state [_ op timestamp msg]]
   (assoc app-state :event-log
-         (assoc (:event-log app-state) timestamp (str "OK kill op: " op))))
+         (assoc (:event-log app-state)
+                timestamp {:result :ok :message (str op " - " msg)})))
 
 (re-frame/register-handler
   :kill-op-ok
@@ -68,9 +73,11 @@
 
 (re-frame/register-handler
   :kill-op-not-ok
-  (fn [app-state _]
+  (fn [app-state [_ response]]
     (re-frame/dispatch [:get-ops])
-    (assoc app-state :status-message "Failed to kill op.")))
+    (assoc app-state :event-log
+           (assoc (:event-log app-state)
+                  (:time response) {:result :err :message (str (:opid response) " - " (:message response))}))))
 
 (re-frame/register-handler
   :log-kill-op-ok

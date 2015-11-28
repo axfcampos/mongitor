@@ -18,4 +18,4 @@
   (:inprog (mcv/from-db-object (mc/find-one @db ops-collection {"$all" true}) true)))
 
 (defn kill-op [id]
-  (mc/find-one @db kill-ops-collection {:op id}))
+  (mcv/from-db-object (mc/find-one @db kill-ops-collection {:op id}) true))
