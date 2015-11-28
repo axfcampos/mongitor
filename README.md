@@ -1,3 +1,4 @@
+[![Build Status](https://semaphoreci.com/api/v1/projects/75abd0f0-8904-44a6-be51-b67eb1776e10/617309/badge.svg)](https://semaphoreci.com/axfcampos/mongitor)
 # mongitor
 
 Monitor mongodb activity
