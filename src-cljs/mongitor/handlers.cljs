@@ -65,7 +65,7 @@
   [app-state [_ op timestamp msg]]
   (assoc app-state :event-log
          (assoc (:event-log app-state)
-                timestamp {:result :ok :message (str op " - " msg)})))
+                timestamp {:result :ok :message (str msg " ---> " op)})))
 
 (re-frame/register-handler
   :kill-op-ok

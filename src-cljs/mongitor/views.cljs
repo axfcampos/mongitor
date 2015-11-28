@@ -14,7 +14,6 @@
   [:button {:class "kill-button" :on-click #(kill-op? opid)} "Kill?"])
 
 (defn- event-table [size elements]
-  (println elements)
   [:table {:class "event-table"}
    (for [[k v] (take size (into (sorted-map-by >) elements))]
      ^{:key k} [:tr {:class "event-tr"}
