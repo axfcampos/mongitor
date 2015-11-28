@@ -34,10 +34,6 @@ To create a standalone executable for your application simply run
 ## TODO
 
 - [ ] Add github oauth authentication
-- [ ] Make a better looking interface
-- [ ] Add error handling
-- [ ] Add testing
-
 
 ## How it looks
 
