@@ -31,14 +31,6 @@ To create a standalone executable for your application simply run
 
     lein uberjar
 
-## TODO
-
-- [ ] Add github oauth authentication
-- [ ] Make a better looking interface
-- [ ] Add error handling
-- [ ] Add testing
-
-
 ## How it looks
 
 ![Mongitor MVP](https://raw.githubusercontent.com/axfcampos/mongitor/master/images/mongitor-mvp.png)
