@@ -15,7 +15,7 @@
 (defonce kill-ops-collection "$cmd.sys.killop")
 
 (defn get-current-ops []
-  (:inprog (mcv/from-db-object (mc/find-one @db ops-collection {"$all" true}) true)))
+  (:inprog (mcv/from-db-object (mc/find-one @db ops-collection {}) true)))
 
 (defn kill-op [id]
   (mcv/from-db-object (mc/find-one @db kill-ops-collection {:op id}) true))

@@ -3,8 +3,12 @@
             [aleph.http :as http]
             [clojure.tools.nrepl.server :as nrepl]
             [taoensso.timbre :as timbre]
+            [cheshire.generate :refer [add-encoder encode-str]]
             [environ.core :refer [env]])
   (:gen-class))
+
+(add-encoder org.bson.types.ObjectId encode-str)
+(add-encoder org.bson.types.BSONTimestamp encode-str)
 
 (defonce nrepl-server (atom nil))
 
