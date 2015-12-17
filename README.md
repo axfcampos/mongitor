@@ -13,11 +13,16 @@ You will need [Leiningen][1] 2.0 or above installed.
 
 [1]: https://github.com/technomancy/leiningen
 
+If you have [homebrew](http://brew.sh/):
+* `brew install leiningen`
+
 ## Running
 
 ENV variables:
 
 * `DATABASE_URI`: The uri to the mongodb database
+
+To be able to visualize and kill operations you need **ADMIN** access to the database.
 
 To start a web server for the application, run:
 
